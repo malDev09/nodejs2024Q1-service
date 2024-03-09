@@ -39,4 +39,12 @@ export class TracksRepo {
     const deletedTrack = this.inMemoryDB.tracks.splice(index, 1)[0];
     return deletedTrack;
   }
+
+  async updateArtistId(artistId: string, newArtistId: string): Promise<void> {
+    this.inMemoryDB.tracks
+      .filter((track) => track.artistId === artistId)
+      .forEach((track) => {
+        track.artistId = newArtistId;
+    });
+  }
 }
