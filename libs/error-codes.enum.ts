@@ -16,4 +16,8 @@ export enum ErrorCodes {
   ARTIST_NOT_FOUND = 'Artist with this id not found',
   NAME_AND_GRAMMY_ARE_REQUIRED = 'Name and grammy are required.',
   INVALID_ARTIST_TYPES = 'Name should be a string, grammy should be a boolean type',
+  // =========Album=========
+  ALBUM_NOT_FOUND = 'Album with this id not found',
+  NAME_AND_YEAR_ARE_REQUIRED = 'Name and year are required.',
+  INVALID_ALBUM_TYPES = 'Name should be a string, year should be a number ',
 }
