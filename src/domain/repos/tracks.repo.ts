@@ -47,4 +47,11 @@ export class TracksRepo {
         track.artistId = newArtistId;
     });
   }
+  async updateAlbumId(albumId: string, newAlbumId: string): Promise<void> {
+    this.inMemoryDB.tracks
+      .filter((track) => track.albumId === albumId)
+      .forEach((track) => {
+        track.albumId = newAlbumId;
+      });
+  }
 }
