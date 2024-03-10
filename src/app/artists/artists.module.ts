@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { InMemoryDBProvider } from 'libs/db/db.provider';
 import { AlbumsRepo } from 'src/domain/repos/albums.repo';
 import { ArtistsRepo } from 'src/domain/repos/artists.repo';
+import { FavoritesRepo } from 'src/domain/repos/favorites.repo';
 import { TracksRepo } from 'src/domain/repos/tracks.repo';
 import { ArtistsController } from './artists.controller';
 import { ArtistsService } from './artists.service';
@@ -12,6 +13,7 @@ import { ArtistsService } from './artists.service';
     ArtistsService,
     ArtistsRepo,
     TracksRepo,
+    FavoritesRepo,
     AlbumsRepo,
     InMemoryDBProvider,
   ],
