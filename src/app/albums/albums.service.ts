@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Album } from 'libs/types/types';
 import { AlbumsRepo } from 'src/domain/repos/albums.repo';
+import { FavoritesRepo } from 'src/domain/repos/favorites.repo';
 import { TracksRepo } from 'src/domain/repos/tracks.repo';
 import { v4 as uuidv4 } from 'uuid';
 import { CreateAlbumDto } from './dto/create-album.dto';
@@ -8,7 +9,11 @@ import { UpdateAlbumDto } from './dto/update-album.dto';
 
 @Injectable()
 export class AlbumsService {
-  constructor(private albumsRepo: AlbumsRepo, private tracksRepo: TracksRepo) {}
+  constructor(
+    private albumsRepo: AlbumsRepo,
+    private tracksRepo: TracksRepo,
+    private readonly favoritesRepo: FavoritesRepo,
+  ) {}
 
   async create(createAlbumDto: CreateAlbumDto) {
     const id = uuidv4();
@@ -46,6 +51,7 @@ export class AlbumsService {
     }
 
     await this.tracksRepo.updateAlbumId(album.id, null);
+    await this.favoritesRepo.deleteFavoriteAlbum(id);
 
     return album;
   }
