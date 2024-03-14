@@ -1,0 +1,12 @@
+# Используем базовый образ PostgreSQL
+FROM postgres:latest
+
+# Настраиваем пользователя и пароль
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=root
+
+# Создаем базу данных
+ENV POSTGRES_DB=hl-db
+
+# Опционально: копируем скрипты и конфигурационные файлы
+# COPY init.sql /docker-entrypoint-initdb.d/
